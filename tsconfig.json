@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"lib": [ "es2020" ],
+		"noEmit": false,
+		"outDir": "dist",
+		"declaration": true,
+		"noImplicitAny": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"skipLibCheck": true,
+	},
+	"exclude": [ "./node_modules" ]
+}
