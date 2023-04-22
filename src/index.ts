@@ -7,7 +7,7 @@ type Getter = {
 	fn: < T >() => T
 }
 
-const makeGettersComputed = < T extends object >( target: T ) => {
+function makeGettersComputed< T extends object >( target: T ) {
 	const descriptors = Object.getOwnPropertyDescriptors( Object.getPrototypeOf( target ) )
 
 	const getters = objectEntries( descriptors ).reduce( ( acc, [ k, v ] ) => {
@@ -28,7 +28,7 @@ const makeGettersComputed = < T extends object >( target: T ) => {
 	return target
 }
 
-const makeGettersComputedWithNested = < T extends object >( target: T ): T => {
+function makeGettersComputedWithNested< T extends object >( target: T ) {
 	makeGettersComputed( target )
 
 	objectEntries( target ).forEach( ( [ k, v ] ) => {
@@ -40,6 +40,6 @@ const makeGettersComputedWithNested = < T extends object >( target: T ): T => {
 	return target
 }
 
-export const makeReactive = < T extends object >( target: T ) => {
+export function makeReactive< T extends object >( target: T ) {
 	return bindMethodsWithNested( makeGettersComputedWithNested( reactive( target ) ) )
 }

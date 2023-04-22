@@ -1,7 +1,8 @@
 {
 	"compilerOptions": {
-		"module": "commonjs",
-		"lib": [ "es2020" ],
+		"module": "NodeNext",
+		"moduleResolution": "Node",
+		"lib": [ "es2020", "DOM" ],
 		"noEmit": false,
 		"outDir": "dist",
 		"declaration": true,

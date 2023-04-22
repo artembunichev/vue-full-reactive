@@ -1,6 +1,6 @@
 import { isObject, objectEntries, objectKeys } from './objects'
 
-const bindMethods = < T extends object >( target: T ): T => {
+function bindMethods< T extends object >( target: T ) {
 	const propNames = Object.getOwnPropertyNames( Object.getPrototypeOf( target ) ) as Array< keyof T >
 	const keys = ( objectKeys( target )  ).concat( propNames )
 
@@ -14,7 +14,7 @@ const bindMethods = < T extends object >( target: T ): T => {
 	return target
 }
 
-export const bindMethodsWithNested = < T extends object >( target: T ) => {
+export function bindMethodsWithNested< T extends object >( target: T ) {
 	bindMethods( target )
 
 	objectEntries( target ).forEach( ( [ k, v ] ) => {
