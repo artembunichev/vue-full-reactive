@@ -40,6 +40,17 @@ function makeGettersComputedWithNested< T extends object >( target: T ) {
 	return target
 }
 
-export function makeReactive< T extends object >( target: T ): T {
-	return bindMethodsWithNested( makeGettersComputedWithNested( reactive( target ) ) ) as T
+export type MakeReactiveOptions = {
+	autoBind?: boolean
+}
+export function makeReactive< T extends object >( target: T, options?: MakeReactiveOptions ): T {
+	const fullReactive = makeGettersComputedWithNested( reactive( target ) ) as T
+
+	const { autoBind = true } = options ?? {}
+
+	if ( autoBind ) {
+		return bindMethodsWithNested( fullReactive )
+	}
+
+	return fullReactive
 }

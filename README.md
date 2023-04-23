@@ -5,24 +5,33 @@ Extended version of [ @vue/reactivity ]( https://github.com/vuejs/core/tree/main
 Package provides a single function - `makeReactive`, that adds the following functionality to Vue's `reactive`:
 
 1. Turns all target's getters into Vue's `computed`.
-2. Binds all target's method's `this` to target.
+2. *( Optional )* Binds all target's method's `this` to target.
 
 These modifications are **deep** — changes will be applied to all nested objects.
-### Installation
+
+## Installation
 
 ```
 npm i vue-make-reactive
 ```
 
-### API
+## API
 
 ```js
-makeReactive< T extends object >( target: T ): T
+makeReactive< T extends object >( target: T, options?: Options ): T
 ```
 
 *Note: in fact, `makeReactive` return type is Vue's `UnwrapNestedRefs< T >`, but actually `T` and `UnwrapNestedRefs< T >` are identical types. So, `T` is used solely for convenience.*
 
-### Usage
+### Options
+
+- `autoBind: boolean`
+
+	Bind all target's method's `this` to target.
+
+	Default: `true`
+
+## Usage
 
 With classes:
 
@@ -74,5 +83,5 @@ const counterStore = makeReactive(
 )
 ```
 
-### Demo
+## Demo
 You can find demo project in `./demo` folder.
