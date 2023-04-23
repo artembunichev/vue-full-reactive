@@ -40,6 +40,6 @@ function makeGettersComputedWithNested< T extends object >( target: T ) {
 	return target
 }
 
-export function makeReactive< T extends object >( target: T ) {
-	return bindMethodsWithNested( makeGettersComputedWithNested( reactive( target ) ) )
+export function makeReactive< T extends object >( target: T ): T {
+	return bindMethodsWithNested( makeGettersComputedWithNested( reactive( target ) ) ) as T
 }
