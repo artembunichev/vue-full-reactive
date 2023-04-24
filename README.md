@@ -2,7 +2,7 @@
 
 Extended version of [ @vue/reactivity ]( https://github.com/vuejs/core/tree/main/packages/reactivity ) `reactive` function.
 
-Package provides a single function - `makeReactive`, that adds the following functionality to Vue's `reactive`:
+Package provides a single function - `makeFullReactive`, that adds the following functionality to Vue's `reactive`:
 
 1. Turns all target's getters into Vue's `computed`.
 2. *( Optional )* Binds all target's method's `this` to target.
@@ -18,10 +18,10 @@ npm i vue-full-reactive
 ## API
 
 ```js
-makeReactive< T extends object >( target: T, options?: Options ): T
+makeFullReactive< T extends object >( target: T, options?: Options ): T
 ```
 
-*Note: in fact, `makeReactive` return type is Vue's `UnwrapNestedRefs< T >`, but actually `T` and `UnwrapNestedRefs< T >` are identical types. So, `T` is used solely for convenience.*
+*Note: in fact, `makeFullReactive` return type is Vue's `UnwrapNestedRefs< T >`, but actually `T` and `UnwrapNestedRefs< T >` are identical types. So, `T` is used solely for convenience.*
 
 ### Options
 
@@ -36,13 +36,13 @@ makeReactive< T extends object >( target: T, options?: Options ): T
 With classes:
 
 ```js
-import { makeReactive } from 'vue-full-reactive'
+import { makeFullReactive } from 'vue-full-reactive'
 
 class CounterStore {
 
 	constructor() {
 		// making a reactive class instance
-		return makeReactive( this )
+		return makeFullReactive( this )
 	}
 
 	// becomes a reactive value
@@ -66,9 +66,9 @@ const counterStore = new CounterStore()
 or with object literals:
 
 ```js
-import { makeReactive } from 'vue-full-reactive'
+import { makeFullReactive } from 'vue-full-reactive'
 
-const counterStore = makeReactive(
+const counterStore = makeFullReactive(
 	{
 		value: 0,
 

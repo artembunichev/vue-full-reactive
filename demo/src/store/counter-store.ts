@@ -1,11 +1,11 @@
 import { inject } from 'vue'
-import { makeReactive } from '../../../src'
+import { makeFullReactive } from '../../../src'
 
 class CounterStore {
 
 	constructor() {
 		// making a reactive class instance
-		return makeReactive( this )
+		return makeFullReactive( this )
 	}
 
 	// becomes a reactive value
