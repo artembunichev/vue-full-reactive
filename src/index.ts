@@ -1,6 +1,6 @@
 import { computed, markRaw, reactive } from '@vue/reactivity'
 import { bindMethodsWithNested } from './lib/bind-methods'
-import { isObject, objectEntries } from './lib/objects'
+import { Entries, isObject } from './lib/objects'
 
 type Getter = {
 	name: string
@@ -10,9 +10,9 @@ type Getter = {
 function makeGettersComputed< T extends object >( target: T ) {
 	const descriptors = Object.getOwnPropertyDescriptors( Object.getPrototypeOf( target ) )
 
-	const getters = objectEntries( descriptors ).reduce( ( acc, [ k, v ] ) => {
+	const getters = Object.entries( descriptors ).reduce( ( acc, [ k, v ] ) => {
 		if ( v.get ) {
-			acc.push( { name: k as string, fn: v.get.bind( target ) } )
+			acc.push( { name: k, fn: v.get.bind( target ) } )
 		}
 		return acc
 	}, [] as Array< Getter > )
@@ -31,7 +31,7 @@ function makeGettersComputed< T extends object >( target: T ) {
 function makeGettersComputedWithNested< T extends object >( target: T ) {
 	makeGettersComputed( target )
 
-	objectEntries( target ).forEach( ( [ k, v ] ) => {
+	;( Object.entries( target ) as Entries< T > ).forEach( ( [ k, v ] ) => {
 		if ( isObject( v ) ) {
 			target[ k ] = makeGettersComputed( v as unknown as object ) as unknown as T[ keyof T ]
 		}
