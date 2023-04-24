@@ -2,7 +2,7 @@
 
 	<div class='title-container'>
 		<div class='title-text'>
-			vue-make-reactive
+			vue-full-reactive
 		</div>
 	</div>
 

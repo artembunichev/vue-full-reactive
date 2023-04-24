@@ -1,5 +1,5 @@
 {
-	"name": "vue-make-reactive",
+	"name": "vue-full-reactive",
 	"version": "1.0.0",
 	"main": "dist/index.js",
 	"files": [
@@ -10,7 +10,7 @@
 		"typecheck": "tsc -p ./tsconfig-check.json --watch",
 		"build": "tsc -p ./tsconfig.json"
 	},
-	"repository": "https://github.com/spleekz/vue-make-reactive",
+	"repository": "https://github.com/spleekz/vue-full-reactive",
 	"keywords": [
 		"vue-reactivity"
 	],

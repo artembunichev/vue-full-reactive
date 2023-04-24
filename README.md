@@ -1,4 +1,4 @@
-# vue-make-reactive
+# vue-full-reactive
 
 Extended version of [ @vue/reactivity ]( https://github.com/vuejs/core/tree/main/packages/reactivity ) `reactive` function.
 
@@ -12,7 +12,7 @@ These modifications are **deep** — changes will be applied to all nested objec
 ## Installation
 
 ```
-npm i vue-make-reactive
+npm i vue-full-reactive
 ```
 
 ## API
@@ -36,7 +36,7 @@ makeReactive< T extends object >( target: T, options?: Options ): T
 With classes:
 
 ```js
-import { makeReactive } from 'vue-make-reactive'
+import { makeReactive } from 'vue-full-reactive'
 
 class CounterStore {
 
@@ -66,7 +66,7 @@ const counterStore = new CounterStore()
 or with object literals:
 
 ```js
-import { makeReactive } from 'vue-make-reactive'
+import { makeReactive } from 'vue-full-reactive'
 
 const counterStore = makeReactive(
 	{

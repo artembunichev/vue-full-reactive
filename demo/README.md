@@ -1,4 +1,4 @@
-# vue-make-reactive demo
+# vue-full-reactive demo
 
 To run the demo project run
 ```
