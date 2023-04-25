@@ -13,7 +13,7 @@ class CounterStore {
 
 	// 'this' will always be CounterStore's reactive instance
 	inc() {
-		this.value++
+		this.value ++
 	}
 
 	// 'this' will always be CounterStore's reactive instance
