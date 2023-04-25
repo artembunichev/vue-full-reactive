@@ -1,5 +1,6 @@
 import { inject } from 'vue'
 import { makeFullReactive } from '../../../src'
+import { NestedCounter } from './nested-counter'
 
 class CounterStore {
 
@@ -26,6 +27,8 @@ class CounterStore {
 		console.log( 'double triggers only when counter changes' )
 		return this.value * 2
 	}
+
+	nestedCounter = new NestedCounter()
 
 }
 

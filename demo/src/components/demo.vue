@@ -9,6 +9,10 @@
 		console.log( 'get double from cache', counterStore.double )
 	}
 
+	const logHalf = () => {
+		console.log( 'get half from cache', counterStore.nestedCounter.half )
+	}
+
 </script>
 
 <template>
@@ -17,17 +21,21 @@
 
 		<div class='demo-block'>
 
-			<div class='values'>
-				<span>
-					counter = {{ counterStore.value }}
-				</span>
-				<span> -> </span>
-				<span>
-					double = {{ counterStore.double }}
-				</span>
-			</div>
+			<div class='demo-part'>
 
-			<div class='action-buttons'>
+				<div class='demo-subtitle'>
+					counter
+				</div>
+
+				<div class='values'>
+					<span>
+						counter = {{ counterStore.value }}
+					</span>
+					<span> -> </span>
+					<span>
+						double = {{ counterStore.double }}
+					</span>
+				</div>
 
 				<div class='button-row'>
 					<ActionButton class='action-button' @click='counterStore.inc'>+</ActionButton>
@@ -36,6 +44,32 @@
 
 				<div class='button-row'>
 					<ActionButton @click='logDouble'>read double ( check console )</ActionButton>
+				</div>
+
+			</div>
+
+			<div class='demo-part'>
+
+				<div class='demo-subtitle'>
+					nested counter
+				</div>
+
+				<div class='values'>
+					<span>
+						counter = {{ counterStore.nestedCounter.value }}
+					</span>
+					<span> -> </span>
+					<span>
+						half = {{ counterStore.nestedCounter.half }}
+					</span>
+				</div>
+
+				<div class='button-row'>
+					<ActionButton @click='counterStore.nestedCounter.dec'>-</ActionButton>
+				</div>
+
+				<div class='button-row'>
+					<ActionButton @click='logHalf'>log half ( check console )</ActionButton>
 				</div>
 
 			</div>
@@ -64,6 +98,29 @@
 		border-radius: 7px;
 	}
 
+	.demo-part {
+		padding: 12px 0;
+		border-bottom: 3px solid #000000;
+	}
+
+	.demo-part:first-child {
+		padding-top: 0;
+	}
+
+	.demo-part:last-child {
+		padding-bottom: 0;
+	}
+
+	.demo-part:last-child {
+		border-bottom: none;
+	}
+
+	.demo-subtitle {
+		font-size: 32px;
+		font-style: italic;
+		text-align: center;
+	}
+
 	.values {
 		font-size: 28px;
 		color: #000000;
@@ -77,7 +134,7 @@
 	.button-row {
 		width: 100%;
 		display: flex;
-		margin-bottom: 15px;
+		margin: 15px 0;
 	}
 
 	.button-row:last-child {
