@@ -1,4 +1,4 @@
-import { computed, markRaw, reactive } from '@vue/reactivity'
+import { UnwrapNestedRefs, computed, markRaw, reactive } from '@vue/reactivity'
 import { bindMethodsWithNested } from './lib/bind-methods'
 import { Entries, isObject } from './lib/objects'
 
@@ -33,8 +33,8 @@ function makeGettersComputedWithNested< T extends object >( target: T ) {
 export type MakeFullReactiveOptions = {
 	autoBind?: boolean
 }
-export function makeFullReactive< T extends object >( target: T, options?: MakeFullReactiveOptions ): T {
-	const fullReactive = makeGettersComputedWithNested( reactive( target ) ) as T
+export function makeFullReactive< T extends object >( target: T, options?: MakeFullReactiveOptions ): UnwrapNestedRefs< T > {
+	const fullReactive = makeGettersComputedWithNested( reactive( target ) )
 
 	const { autoBind = true } = options ?? {}
 

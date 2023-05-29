@@ -18,10 +18,8 @@ npm i vue-full-reactive
 ## API
 
 ```js
-makeFullReactive< T extends object >( target: T, options?: Options ): T
+makeFullReactive< T extends object >( target: T, options?: Options ): UnwrapNestedRefs< T >
 ```
-
-*Note:* in fact, `makeFullReactive` return type is Vue's `UnwrapNestedRefs< T >`, but actually `T` and `UnwrapNestedRefs< T >` are identical types. So, `T` is used solely for convenience.
 
 ### Options
 
